@@ -27,10 +27,9 @@ Next session starts: Phase 0.5 — DC Architecture
     verified, broken and fixed
 
 ## Current Phase
-Phase 0.5 — DC Architecture
-Status: NOT STARTED
-Next: AWS setup first (launch first EC2 instance)
-      then DC architecture theory
+Current phase: Phase 0.5 — DC Architecture
+Status: AWS setup complete, FRR installed
+Next: DC architecture theory — 3-tier first
 
 ## Where We Stopped
 Phase 0 complete. Clean slate for Phase 0.5.
