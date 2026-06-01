@@ -27,10 +27,15 @@ Next session starts: Phase 0.5 — DC Architecture
     verified, broken and fixed
 
 ## Current Phase
-Current phase: Phase 0.5 — DC Architecture
-Status: AWS setup complete, FRR installed
-Next: DC architecture theory — 3-tier first
-
+Current phase: Phase 0.5 COMPLETE
+Next session: Automation Foundations
+              Python basics for networking
+Status: All concepts confirmed solid including
+        L2/L3 boundary, routed ports, why
+        broadcasts stop at spine uplinks,
+        VXLAN purpose now clear
+EC2 Instance: stopped (not terminated,
+              needed for future labs)
 ## Where We Stopped
 Phase 0 complete. Clean slate for Phase 0.5.
 AWS setup instructions already given in previous
