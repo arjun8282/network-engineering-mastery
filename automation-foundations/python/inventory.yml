@@ -1,0 +1,10 @@
+fabric:
+  - hostname: leaf01
+    loopback_v4: 10.255.0.2/32 
+    loopback_v6: 2001:db8::1/128 
+  - hostname: leaf02
+    loopback_v4: 10.255.0.3/32
+    loopback_v6: 2001:db8::2/128
+  - hostname: spine01
+    loopback_v4: 10.255.1.1/32
+    loopback_v6: 2001:db8:1::1/128
