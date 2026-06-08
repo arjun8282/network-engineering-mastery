@@ -1,0 +1,14 @@
+devices:
+  - name: spine-01
+    loopback_ipv4: 10.0.0.1/32
+    loopback_ipv6: 2001:db8::1/128
+
+  - name: spine-02
+    loopback_ipv4: 10.0.0.2/32
+
+  - name: leaf-01
+    loopback_ipv4: 10.0.1.1/32
+    loopback_ipv6: 2001:db8:1::1/128
+
+  - name: leaf-02
+    loopback_ipv4: 10.0.1.2/32

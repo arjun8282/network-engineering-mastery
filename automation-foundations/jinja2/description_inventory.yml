@@ -1,0 +1,21 @@
+devices:
+  - name: leaf-01
+    interfaces:
+      - name: eth1
+        ip: 10.0.1.1/30
+        description: uplink-to-spine-01
+      - name: eth2
+        ip: 10.0.2.1/30
+        description: uplink-to-spine-02
+      - name: eth3
+        ip: 10.0.3.1/30
+        description: server-rack-01
+
+  - name: leaf-02
+    interfaces:
+      - name: eth1
+        ip: 10.0.1.5/30
+        description: uplink-to-spine-01
+      - name: eth2
+        ip: 10.0.2.5/30
+        description: uplink-to-spine-02

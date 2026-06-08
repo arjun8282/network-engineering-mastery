@@ -1,0 +1,5 @@
+interface lo
+ ip address {{ loopback_ipv4 }}
+{% if loopback_ipv6 %}
+ ipv6 address {{ loopback_ipv6 }}
+{% endif %}
