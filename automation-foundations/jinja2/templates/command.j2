@@ -1,0 +1,1 @@
+vtysh -c 'configure terminal' {% for cmd in commands %}-c '{{ cmd }}' {% endfor %}-c 'end' -c 'write memory'
