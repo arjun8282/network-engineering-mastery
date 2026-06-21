@@ -1,0 +1,4 @@
+---
+vyos_routers:
+  username: vyos
+  password: vyos_secret

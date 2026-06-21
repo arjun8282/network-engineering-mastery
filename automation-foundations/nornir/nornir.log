@@ -1,0 +1,91 @@
+2026-06-21 03:44:53,016 -  nornir.core -     INFO -        run() - Running task 'check_in' with args {} on 5 hosts
+2026-06-21 03:44:53,019 - nornir.core.task -    ERROR -      start() - Host 'frr1': task 'check_in' failed with traceback:
+Traceback (most recent call last):
+  File "/home/ubuntu/netauto/venv/lib/python3.10/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/home/ubuntu/network-engineering-mastery/automation-foundations/nornir/lab15_nornir_first_task.py", line 7, in check_in
+    return Return(host=task.host, result=f"ok fronm the {task.host.name}")
+NameError: name 'Return' is not defined
+
+2026-06-21 03:44:53,019 - nornir.core.task -    ERROR -      start() - Host 'vyos2': task 'check_in' failed with traceback:
+Traceback (most recent call last):
+  File "/home/ubuntu/netauto/venv/lib/python3.10/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/home/ubuntu/network-engineering-mastery/automation-foundations/nornir/lab15_nornir_first_task.py", line 6, in check_in
+    raise ValueError("Simulated device unreachable")
+ValueError: Simulated device unreachable
+
+2026-06-21 03:44:53,020 - nornir.core.task -    ERROR -      start() - Host 'frr2': task 'check_in' failed with traceback:
+Traceback (most recent call last):
+  File "/home/ubuntu/netauto/venv/lib/python3.10/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/home/ubuntu/network-engineering-mastery/automation-foundations/nornir/lab15_nornir_first_task.py", line 7, in check_in
+    return Return(host=task.host, result=f"ok fronm the {task.host.name}")
+NameError: name 'Return' is not defined
+
+2026-06-21 03:44:53,020 - nornir.core.task -    ERROR -      start() - Host 'vyos1': task 'check_in' failed with traceback:
+Traceback (most recent call last):
+  File "/home/ubuntu/netauto/venv/lib/python3.10/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/home/ubuntu/network-engineering-mastery/automation-foundations/nornir/lab15_nornir_first_task.py", line 7, in check_in
+    return Return(host=task.host, result=f"ok fronm the {task.host.name}")
+NameError: name 'Return' is not defined
+
+2026-06-21 03:44:53,020 - nornir.core.task -    ERROR -      start() - Host 'frr3': task 'check_in' failed with traceback:
+Traceback (most recent call last):
+  File "/home/ubuntu/netauto/venv/lib/python3.10/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/home/ubuntu/network-engineering-mastery/automation-foundations/nornir/lab15_nornir_first_task.py", line 7, in check_in
+    return Return(host=task.host, result=f"ok fronm the {task.host.name}")
+NameError: name 'Return' is not defined
+
+2026-06-21 03:45:59,255 -  nornir.core -     INFO -        run() - Running task 'check_in' with args {} on 5 hosts
+2026-06-21 03:45:59,258 - nornir.core.task -    ERROR -      start() - Host 'vyos1': task 'check_in' failed with traceback:
+Traceback (most recent call last):
+  File "/home/ubuntu/netauto/venv/lib/python3.10/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/home/ubuntu/network-engineering-mastery/automation-foundations/nornir/lab15_nornir_first_task.py", line 7, in check_in
+    return Return(host=task.host, result=f"ok fronm the {task.host.name}")
+NameError: name 'Return' is not defined
+
+2026-06-21 03:45:59,259 - nornir.core.task -    ERROR -      start() - Host 'vyos2': task 'check_in' failed with traceback:
+Traceback (most recent call last):
+  File "/home/ubuntu/netauto/venv/lib/python3.10/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/home/ubuntu/network-engineering-mastery/automation-foundations/nornir/lab15_nornir_first_task.py", line 6, in check_in
+    raise ValueError("Simulated device unreachable")
+ValueError: Simulated device unreachable
+
+2026-06-21 03:45:59,259 - nornir.core.task -    ERROR -      start() - Host 'frr3': task 'check_in' failed with traceback:
+Traceback (most recent call last):
+  File "/home/ubuntu/netauto/venv/lib/python3.10/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/home/ubuntu/network-engineering-mastery/automation-foundations/nornir/lab15_nornir_first_task.py", line 7, in check_in
+    return Return(host=task.host, result=f"ok fronm the {task.host.name}")
+NameError: name 'Return' is not defined
+
+2026-06-21 03:45:59,259 - nornir.core.task -    ERROR -      start() - Host 'frr2': task 'check_in' failed with traceback:
+Traceback (most recent call last):
+  File "/home/ubuntu/netauto/venv/lib/python3.10/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/home/ubuntu/network-engineering-mastery/automation-foundations/nornir/lab15_nornir_first_task.py", line 7, in check_in
+    return Return(host=task.host, result=f"ok fronm the {task.host.name}")
+NameError: name 'Return' is not defined
+
+2026-06-21 03:45:59,259 - nornir.core.task -    ERROR -      start() - Host 'frr1': task 'check_in' failed with traceback:
+Traceback (most recent call last):
+  File "/home/ubuntu/netauto/venv/lib/python3.10/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/home/ubuntu/network-engineering-mastery/automation-foundations/nornir/lab15_nornir_first_task.py", line 7, in check_in
+    return Return(host=task.host, result=f"ok fronm the {task.host.name}")
+NameError: name 'Return' is not defined
+
+2026-06-21 03:47:11,101 -  nornir.core -     INFO -        run() - Running task 'check_in' with args {} on 5 hosts
+2026-06-21 03:47:11,103 - nornir.core.task -    ERROR -      start() - Host 'vyos2': task 'check_in' failed with traceback:
+Traceback (most recent call last):
+  File "/home/ubuntu/netauto/venv/lib/python3.10/site-packages/nornir/core/task.py", line 98, in start
+    r = self.task(self, **self.params)
+  File "/home/ubuntu/network-engineering-mastery/automation-foundations/nornir/lab15_nornir_first_task.py", line 6, in check_in
+    raise ValueError("Simulated device unreachable")
+ValueError: Simulated device unreachable
+

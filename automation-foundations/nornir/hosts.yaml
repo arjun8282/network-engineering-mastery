@@ -1,0 +1,15 @@
+---
+frr1:
+  hostname: 10.0.0.11
+frr2:
+  hostname: 10.0.0.12
+frr3:
+  hostname: 10.0.0.13
+vyos1:
+  hostname: 10.0.0.21
+  groups:
+    - vyos_routers
+vyos2:
+  hostname: 10.0.0.22
+  groups:
+    - vyos_routers
