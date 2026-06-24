@@ -1,13 +1,14 @@
+cat > ~/network-engineering-mastery/MASTER_CONTEXT.md << 'EOF'
 # Network Engineering Mastery — Master Context
 ## Session Info
-Last updated: 2026-06-21
+Last updated: 2026-06-24
 Current phase: Automation Foundations — IN PROGRESS
-Module 6 (Nornir) COMPLETE
-Next session: Module 7 — REST API (requests)
+Module 8 (Ansible) COMPLETE
+Next session: Module 9 — pyATS/Genie + Pytest
 
 ## Student Profile
 - Protocol knowledge: beginner
-- Python/automation knowledge: Modules 1-6 complete
+- Python/automation knowledge: Modules 1-8 complete
 - Goal: FAANG/NVIDIA network engineer role
 - Timeline: 7 months
 - GitHub: https://github.com/arjun8282/network-engineering-mastery.git
@@ -25,68 +26,94 @@ Module order:
 4. Netmiko                ✓ COMPLETE
 5. NAPALM                 ✓ COMPLETE
 6. Nornir                 ✓ COMPLETE
-7. REST API (requests)    ← NEXT
-8. Ansible
-9. pyATS/Genie + Pytest
+7. REST API (requests)    ✓ COMPLETE
+8. Ansible                ✓ COMPLETE
+9. pyATS/Genie + Pytest   ← NEXT
+
+#### Module 8 — Ansible ✓
+- WHY Ansible: declarative vs imperative — describe end state,
+  not steps; Ansible figures out what needs to change
+- Agentless, push-based over SSH
+- Control node pushes to targets; nothing installed on devices
+- Inventory: INI format, groups, host variables
+- group_vars/: files named after group loaded automatically
+- host_vars/: files named after host loaded automatically
+- Naming rule: filename must match group or host name exactly
+- ansible_connection=local: no SSH, runs on control node itself
+- Playbook: YAML file, one or more plays
+- Play: maps hosts group to list of tasks
+- Task: calls one module
+- Module: unit of idempotent work
+- gather_facts: true — Ansible collects system variables before
+  tasks run (ansible_distribution, ansible_date_time,
+  inventory_hostname, etc.)
+- ansible.builtin.debug: prints messages, diagnostic only
+- ansible.builtin.apt: package management, state=present
+- ansible.builtin.file: ensures path exists with correct perms
+- ansible.builtin.template: renders Jinja2 template to target
+- ansible.builtin.service: manages services
+- become: true — privilege escalation (sudo)
+- state: present — idempotency declaration, not a command
+- Idempotency: changed vs ok — safe to run repeatedly
+- Handlers: only fire when notified task returns changed
+- notify: pointer to handler by name; surgical restarts only
+- Ansible Vault: encrypts secrets at rest, decrypts in memory
+- ansible-vault create: creates encrypted file
+- ansible-vault view: inspect encrypted file
+- --ask-vault-pass: prompt for password at runtime
+- Vault file must be named after group/host to auto-load
+- Jinja2 templating: Module 3 syntax works natively in Ansible
+- PLAY RECAP: ok/changed/failed — failed=0 is the key check
+- playbook.yaml, ansible.cfg, inventory.ini committed to GitHub
+- group_vars/control.yaml: NTP servers (plaintext)
+- host_vars/localhost.yaml: secrets (vault encrypted)
+- templates/ntp.conf.j2: Jinja2 template with facts + vars
+
+#### Module 7 — REST API (requests) ✓
+- WHY REST: machine interface vs human interface
+- REST is not an RFC — Roy Fielding's 2000 PhD dissertation
+- HTTP semantics: RFC 9110
+- JSON: RFC 8259
+- Forward pointer: RESTCONF is RFC 8040 (Phase 2)
+- Resources + Methods + Status codes
+- Idempotency: GET, PUT, DELETE idempotent; POST is not
+- Response object: .status_code, .headers, .text, .json()
+- Session: persistent TCP + headers set once
+- Error handling: timeout=, raise_for_status(), RequestException
+- Pagination via Link header rel="next"
+- lab18_rest_api.py ✓
+- lab19_rest_api_pagination.py ✓
 
 #### Module 6 — Nornir ✓
-- WHY Nornir: sequential loop problem, per-script plumbing
-  repetition, no standard result shape — all three solved
-- Plugin-based architecture: nornir core is minimal;
-  nornir-utils, nornir-netmiko, nornir-napalm, nornir-jinja2
-  are separate installs
-- SimpleInventory: three-file structure (hosts/groups/defaults)
-- Inheritance / resolution order: host → group → defaults;
-  write credentials once, override where needed
-- hosts.yaml: unique-per-device (hostname, data, groups)
-- groups.yaml: shared-by-category (e.g. vyos_routers username)
-- defaults.yaml: fallback for everyone
-- data: free-form dict on hosts/groups for role, ASN, etc.
-- InitNornir: config via inline dict or config.yaml
-- Task: a function that handles ONE host; Nornir fans it out
+- WHY Nornir: sequential loop, per-script plumbing, no standard
+  result shape — all three solved
+- Plugin-based: nornir-utils, nornir-netmiko, nornir-napalm
+- SimpleInventory: hosts/groups/defaults
+- Inheritance: host → group → defaults
+- Task: function handling ONE host; Nornir fans out
 - Runner: threaded, num_workers controls concurrency
-- num_workers: 1 vs 5 — wall-clock demo with sleep(2)
-  confirmed ~10s serial vs ~2s parallel
-- Result hierarchy: AggregatedResult → MultiResult → Result
-- AggregatedResult.failed, .failed_hosts — whole-run health
-- MultiResult[0] — single Result for a simple task
-- Result.result, .failed, .exception — per-host outcome
-- Per-host failure handling: exception on one host does NOT
-  crash the run; Nornir catches and records it
-- Filtering: nr.filter() returns a new Nornir object (original
-  untouched), scopes blast radius
-- Simple filter: nr.filter(role="leaf") — kwargs match on
-  host attributes and data fields
-- F object: F(groups__contains="vyos_routers") for group
-  membership and other non-equality checks
-- Boolean logic: F(...) & F(...), F(...) | F(...), ~F(...)
-- lab14_nornir_inventory.py ✓ (built incrementally:
-  single device → defaults inheritance → groups)
-- lab15_nornir_first_task.py ✓ (task + threaded runner,
-  num_workers concurrency demo)
-- lab16_nornir_results.py ✓ (AggregatedResult/MultiResult/
-  Result hierarchy, per-host failure handling)
-- lab17_nornir_filter.py ✓ (simple kwargs, F object,
-  group/data/logic, scoped run)
-- Execution deferred — multi-router EC2 not yet provisioned
+- Result: AggregatedResult → MultiResult → Result
+- Filtering: nr.filter() with F object
+- lab14–17 complete, execution deferred to multi-router phase
 
 ## Teaching Notes
 - Do NOT ask for output confirmation — student reports errors
 - Student actively questions design decisions — answer directly
 - Student pushes back on over-engineering — keep it lean
-- Student writes scripts independently — confidence growing
+- Student writes scripts independently before requesting help
 - Build one concept at a time before full scripts
 - Make the problem visible before introducing the solution
-- .items() introduced Module 5 — part of vocabulary
-- List of strings vs list of dicts — understood
-- Incremental inventory build (1 file → 2 files → 3 files)
-  worked well — use same pattern for new concepts
-- Module order changed: REST API moved before Ansible
+- Always include full imports in every REPL snippet
+- Recurring errors to anticipate:
+  - Capitalization errors on class/method names
+  - .json vs .json() attribute vs method
+  - Missing f-string prefix
+  - Indentation breaks in multi-block scripts
 
 ## Where We Stopped
-Module 6 Nornir complete and pushed to GitHub.
-Multi-router EC2 deferred — provisioned before Phase 1 IGP.
-Next: Module 7 REST API — works on existing Ubuntu EC2.
+Module 8 Ansible complete. All files committed to GitHub under
+automation-foundations/ansible/.
+Next: Module 9 pyATS/Genie + Pytest.
 EC2: STOP after this session.
 Region: ap-south-1. venv: ~/netauto/venv.
 
@@ -141,4 +168,7 @@ PBR, UDLD, Ethernet OAM, LACP
 - automation-foundations/netmiko/ ✓
 - automation-foundations/napalm/ ✓
 - automation-foundations/nornir/ ✓
+- automation-foundations/rest-api/ ✓
+- automation-foundations/ansible/ ✓
 - lab-journal/ ✓
+EOF
