@@ -1,0 +1,36 @@
+---
+- name: Bootstrap control node
+  hosts: control
+  gather_facts: true
+
+  handlers:
+    - name: Restart cron
+      ansible.builtin.service:
+        name: cron
+        state: restarted
+      become: true  
+
+  tasks:
+    - name: Print OS information
+      ansible.builtin.debug:
+        msg: "OS: {{ ansible_distribution }} {{ ansible_distribution_version }}"
+
+    - name: Ensure curl is installed
+      ansible.builtin.apt:
+        name: curl
+        state: present
+      become: true
+
+    - name: Ensure /opt/netauto directory exists
+      ansible.builtin.file:
+        path: /opt/netauto
+        state: directory
+        mode: '0755'
+      become: true
+
+    - name: Deploy network config file from template
+      ansible.builtin.template:
+        src: templates/ntp.conf.j2
+        dest: /opt/netauto/ntp.conf
+      become: true
+      notify: Restart cron
